@@ -9,7 +9,6 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ include "argo-cd.name" . }}-{{ .Values.dex.name }}
     helm.sh/chart: {{ include "argo-cd.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/component: {{ .Values.dex.name }}
@@ -29,7 +28,6 @@ spec:
       - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      app.kubernetes.io/instance: {{ .Release.Name }}
       app.kubernetes.io/name: {{ include "argo-cd.name" . }}-{{ .Values.dex.name }}
       app.kubernetes.io/component: {{ .Values.dex.name }}
 {{- end }}

@@ -10,7 +10,6 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ include "argo-cd.name" . }}-{{ .Values.repoServer.name }}
     helm.sh/chart: {{ include "argo-cd.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/component: {{ .Values.repoServer.name }}
@@ -22,5 +21,4 @@ spec:
     port: {{ .Values.repoServer.service.port }}
     targetPort: repo-server
   selector:
-    app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/name: {{ include "argo-cd.name" . }}-{{ .Values.repoServer.name }}
